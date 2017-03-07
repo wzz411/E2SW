@@ -46,8 +46,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\CameraMove.cs" />
-     <Compile Include="Assets\GenerateNewNode.cs" />
+     <Compile Include="Assets\Scripts\CameraMove.cs" />
+     <Compile Include="Assets\Scripts\GenerateNewNode.cs" />
+     <Compile Include="Assets\Scripts\inputScript.cs" />
+     <Compile Include="Assets\Scripts\menuScript.cs" />
+     <Compile Include="Assets\Scripts\popUpWindow.cs" />
+     <Compile Include="Assets\Scripts\testInputScript.cs" />
      <Compile Include="Assets\UIGraph\Scripts\Connection.cs" />
      <Compile Include="Assets\UIGraph\Scripts\ConnectionManager.cs" />
      <Compile Include="Assets\UIGraph\Scripts\ConnectionPoint.cs" />
@@ -56,10 +60,6 @@
      <Compile Include="Assets\UIGraph\Scripts\Util\ObfuscateObject.cs" />
      <Compile Include="Assets\UIGraph\Scripts\Util\ObfuscateText.cs" />
      <Compile Include="Assets\UIGraph\Scripts\Util\SpinCamera.cs" />
-     <Compile Include="Assets\inputScript.cs" />
-     <Compile Include="Assets\menuScript.cs" />
-     <Compile Include="Assets\popUpWindow.cs" />
-     <Compile Include="Assets\testInputScript.cs" />
  <Reference Include="UnityEngine.Analytics">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
