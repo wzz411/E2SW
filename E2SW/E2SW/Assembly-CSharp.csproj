@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\CameraMove.cs" />
      <Compile Include="Assets\Scripts\GenerateNewNode.cs" />
+     <Compile Include="Assets\Scripts\NewNodeScript.cs" />
      <Compile Include="Assets\Scripts\inputScript.cs" />
      <Compile Include="Assets\Scripts\menuScript.cs" />
      <Compile Include="Assets\Scripts\popUpWindow.cs" />

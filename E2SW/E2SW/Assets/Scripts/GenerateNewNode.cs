@@ -7,12 +7,24 @@ public class GenerateNewNode : MonoBehaviour {
 
 	public Transform button;
 	public GameObject node;
+	public InputField laborInputField;
 
 	private GameObject newNode;
 
 	public void Generate() {
+
+		int numberOfNewNode = 1;
+
 		Debug.Log ("Generated!");
-		newNode = Instantiate(node, new Vector3(transform.position.x + 150, transform.position.y, transform.position.z), Quaternion.identity) as GameObject;
+		if (int.Parse (laborInputField.text) >= 2)
+			numberOfNewNode += 1;
+		if (int.Parse (laborInputField.text) >= 5)
+			numberOfNewNode += 1;
+
+		while (numberOfNewNode > 0) {
+			newNode = Instantiate (node, new Vector3 (transform.position.x + 150, transform.position.y - (numberOfNewNode - 1) * 150, transform.position.z), Quaternion.identity) as GameObject;
+			numberOfNewNode--;
+		}
 		if (button.GetComponent<Button> ().IsInteractable () == true) {
 			button.GetComponent<Button> ().interactable = false;
 			button.GetComponent<Renderer> ().material.color = Color.gray;
