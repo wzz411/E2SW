@@ -59,19 +59,27 @@ public class Testing : MonoBehaviour {
         {
             minEPG_cal = 3;
             maxEPG_cal = 10;
-        }else if (DisplayInfo.attrWeightedSum <25)
+			minEPG.text = minEPG_cal.ToString ();
+			maxEPG.text = maxEPG_cal.ToString ();
+        }else if (DisplayInfo.attrWeightedSum < 25)
         {
             minEPG_cal = 15;
             maxEPG_cal = 25;
+			minEPG.text = minEPG_cal.ToString ();
+			maxEPG.text = maxEPG_cal.ToString ();
         }else if (DisplayInfo.attrWeightedSum < 40)
         {
             minEPG_cal = 25;
             maxEPG_cal = 40;
+			minEPG.text = minEPG_cal.ToString ();
+			maxEPG.text = maxEPG_cal.ToString ();
         }
         else
         {
             minEPG_cal = 40;
             maxEPG_cal = 50;
+			minEPG.text = minEPG_cal.ToString ();
+			maxEPG.text = maxEPG_cal.ToString ();
         }
         vectorSum = drillPoints + int.Parse(numberOfNodesPurchased.text) + int.Parse(numberOfTestPerformed.text);
         
@@ -138,9 +146,9 @@ public class Testing : MonoBehaviour {
         numOfTurns = (float)Math.Exp(((int.Parse(currentTurn.text))-(int.Parse(numberOfTestPerformed.text)))*0.2f);
         depth = BuyNode.count;
         numOfPeople = int.Parse(laborInputField.text);
-        labor.text = (int.Parse(labor.text) - int.Parse(laborInputField.text)).ToString();
+		labor.text = (int.Parse(labor.text) - int.Parse(laborInputField.text)).ToString();
         costOfCurrentTest.text = (300 + (20 * numOfTests) + 30 * numOfTurns + 30 * numOfPeople).ToString();
-        funds_cost.text = (float.Parse(funds_cost.text) - (300 + (20 * numOfTests) + 30 * numOfTurns + 30 * numOfPeople)).ToString();
+		funds_cost.text = (float.Parse(funds_cost.text) - (300 + (20 * numOfTests) + 30 * numOfTurns + 30 * numOfPeople)).ToString("0.##");
         overAllPG.text = (float.Parse(overAllPG.text) + float.Parse(apgFromCurrentTest.text)).ToString();
 
     }

@@ -18,7 +18,8 @@ public class GenerateNewNode : MonoBehaviour {
 
     private void Start()
     {
-        ifMastermind = Random.Range(0, 100)/50 >= 1;
+		ifMastermind = false;
+        //ifMastermind = Random.Range(0, 100)/50 >= 1;
         Debug.Log("mastermind "+ifMastermind);
     }
 

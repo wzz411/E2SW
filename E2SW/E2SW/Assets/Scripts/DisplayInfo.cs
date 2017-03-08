@@ -20,7 +20,7 @@ public class DisplayInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public static float attrF;
     public static float attrG;
     public static float attrH;
-    public static float attrWeightedSum;
+    public static float attrWeightedSum=0;
 
     private void Start()
     {
@@ -52,7 +52,7 @@ public class DisplayInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         attrH = Random.Range(0, 9);
         attributes += "Criteria H " + attrH + '\n';
 
-        attrWeightedSum = attrA + attrB + attrC + attrD + attrE + attrF + attrG + attrG + attrH ;
+        attrWeightedSum += attrA + attrB + attrC + attrD + attrE + attrF + attrG + attrG + attrH ;
 
     }
 
