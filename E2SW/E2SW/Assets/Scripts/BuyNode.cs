@@ -21,6 +21,9 @@ public class BuyNode : MonoBehaviour
     public Text turnsRemaining;
     public Text numberOfPurchasedNodes;
 
+
+
+
     public int exploreLabor;
 
     public GameObject nodeObject;
