@@ -17,6 +17,23 @@ public class Testing : MonoBehaviour {
     public Text currentTurn;
     public Text costOfCurrentTest;
     public InputField laborInputField;
+    public Text testedCriA;
+    public Text testedCriB;
+    public Text testedCriC;
+    public Text testedCriD;
+    public Text testedCriE;
+    public Text testedCriF;
+    public Text testedCriG;
+    public Text testedCriH;
+    public Text estCriA;
+    public Text estCriB;
+    public Text estCriC;
+    public Text estCriD;
+    public Text estCriE;
+    public Text estCriF;
+    public Text estCriG;
+    public Text estCriH;
+
 
 
     // public GameObject displayInfoObject;
@@ -41,6 +58,7 @@ public class Testing : MonoBehaviour {
     private float numOfTurns;
     private int depth;
     private float numOfPeople;
+
 
 
    /* 
@@ -151,6 +169,16 @@ public class Testing : MonoBehaviour {
 		funds_cost.text = (float.Parse(funds_cost.text) - (300 + (20 * numOfTests) + 30 * numOfTurns + 30 * numOfPeople)).ToString("0.##");
         overAllPG.text = (float.Parse(overAllPG.text) + float.Parse(apgFromCurrentTest.text)).ToString();
 
+
+        //update tested criteria
+        testedCriA.text = (int.Parse(estCriA.text) - UnityEngine.Random.Range(0, 2)).ToString();
+        testedCriB.text = (int.Parse(estCriB.text) - UnityEngine.Random.Range(0, 2)).ToString();
+        testedCriC.text = (int.Parse(estCriC.text) - UnityEngine.Random.Range(0, 2)).ToString();
+        testedCriD.text = (int.Parse(estCriD.text) - UnityEngine.Random.Range(0, 2)).ToString();
+        testedCriE.text = (int.Parse(estCriE.text) - UnityEngine.Random.Range(0, 2)).ToString();
+        testedCriF.text = (int.Parse(estCriF.text) - UnityEngine.Random.Range(0, 2)).ToString();
+        testedCriG.text = (int.Parse(estCriG.text) - UnityEngine.Random.Range(0, 2)).ToString();
+        testedCriH.text = (int.Parse(estCriH.text) - UnityEngine.Random.Range(0, 2)).ToString();
     }
 
 }

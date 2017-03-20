@@ -83,6 +83,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\BuyNode.cs" />
     <Compile Include="Assets\Scripts\CameraMove.cs" />
+    <Compile Include="Assets\Scripts\CriteriaToggle.cs" />
     <Compile Include="Assets\Scripts\DisplayInfo.cs" />
     <Compile Include="Assets\Scripts\Draggable.cs" />
     <Compile Include="Assets\Scripts\Dropdown.cs" />
