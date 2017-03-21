@@ -48,10 +48,12 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\BuyNode.cs" />
      <Compile Include="Assets\Scripts\CameraMove.cs" />
+     <Compile Include="Assets\Scripts\Classes\NodeInfo.cs" />
      <Compile Include="Assets\Scripts\CriteriaToggle.cs" />
      <Compile Include="Assets\Scripts\DisplayInfo.cs" />
      <Compile Include="Assets\Scripts\Draggable.cs" />
      <Compile Include="Assets\Scripts\Dropdown.cs" />
+     <Compile Include="Assets\Scripts\GameControllerScript.cs" />
      <Compile Include="Assets\Scripts\GenerateNewNode.cs" />
      <Compile Include="Assets\Scripts\NewNodeScript.cs" />
      <Compile Include="Assets\Scripts\SceneChange.cs" />

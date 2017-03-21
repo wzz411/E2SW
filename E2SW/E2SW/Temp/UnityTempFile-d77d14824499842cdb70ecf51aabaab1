@@ -81,10 +81,12 @@
 -define:UNITY_TEAM_LICENSE
 'Assets/Scripts/BuyNode.cs'
 'Assets/Scripts/CameraMove.cs'
+'Assets/Scripts/Classes/NodeInfo.cs'
 'Assets/Scripts/CriteriaToggle.cs'
 'Assets/Scripts/DisplayInfo.cs'
 'Assets/Scripts/Draggable.cs'
 'Assets/Scripts/Dropdown.cs'
+'Assets/Scripts/GameControllerScript.cs'
 'Assets/Scripts/GenerateNewNode.cs'
 'Assets/Scripts/NewNodeScript.cs'
 'Assets/Scripts/SceneChange.cs'

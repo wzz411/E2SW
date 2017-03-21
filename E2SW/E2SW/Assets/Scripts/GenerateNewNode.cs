@@ -6,42 +6,33 @@ using UnityEngine.SceneManagement;
 
 public class GenerateNewNode : MonoBehaviour {
 
-
+	public Transform parentGroup;
     public Transform button;
-    public GameObject node;
     public InputField laborInputField;
     public BuyNode buyNodeScript;
     public bool ifMastermind;
 
-    private GameObject newNode;
-	private int nodeTrim = 30;
+	public GameObject node;
+	public int nodeTrim;
+
+	private GameObject newNode;
 
     private void Start()
     {
 		ifMastermind = false;
         //ifMastermind = Random.Range(0, 100)/50 >= 1;
-        Debug.Log("mastermind "+ifMastermind);
+        //Debug.Log("mastermind "+ifMastermind);
 		button.GetComponent<Button> ().interactable = true;
     }
 
     public void Generate() {
 
-        int numberOfNode = 1;
-        
-		if (int.Parse(laborInputField.text) >= Random.Range(3, 6))
-            numberOfNode += 1;
-		if (int.Parse(laborInputField.text) >= Random.Range(6, 9))
-            numberOfNode += 1;
-
 		Debug.Log ("Generated!");
 
-		Debug.Log (numberOfNode + " Generating");
-
-		float[,] positions = new float[numberOfNode,2];
-
-		int order = Mathf.Abs((int)transform.position.x) / nodeTrim;
-
-		order++;
+		string[] currentNodeName = transform.name.Split(' ');
+		if (int.Parse (currentNodeName [1]) == 4) {
+			Debug.Log ("Start");
+		}
 
 		//Button unpressable
 		if (button.GetComponent<Button> ().IsInteractable () == true) {
@@ -52,47 +43,97 @@ public class GenerateNewNode : MonoBehaviour {
 			//button.GetComponent<Renderer> ().material.color = Color.white;
 		}
 
-		for (int i = 0; i < numberOfNode; i++) {
-			int x, y;
-			if (Random.Range (0, 2) == 0) {
-				x = Random.Range (1, 50) + nodeTrim * order;
-			} else {
-				x = Random.Range (-50, -1) - nodeTrim * order;
+		//Getting the current node info
+		int currentDirection = int.Parse (currentNodeName [0]);
+		int currentLevel = int.Parse (currentNodeName [1]);
+		int currentOrder = int.Parse (currentNodeName [2]);
+
+		//Making the random number of node
+		int maxNode = 2 * (currentLevel + 1) + 1;
+		int[] nodeExist = new int[Random.Range(1, maxNode + 1)];
+		int element;
+
+		//Checking independence order
+		for(int i = 0; i < nodeExist.Length; i++) {
+			element = Random.Range (-(currentLevel + 1), currentLevel + 2);
+			for (int j = 0; j < i; j++) {
+				if (element == nodeExist [j]) {
+					i--;
+					break;
+				}
 			}
-			if (Random.Range (0, 2) == 0) {
-				y = Random.Range (1, 50) + nodeTrim * order;
-			} else {
-				y = Random.Range (-50, -1) - nodeTrim * order;
-			}
-			if (isNodeContainOkay (positions, x, y, i)) {
-				positions[i,0] = x;
-				positions[i,1] = y;
-			} else {
-				Debug.Log ("Again");
-				i--;
+			nodeExist [i] = element;
+		}
+
+		//Checking overrapping
+		for (int i = 0; i < nodeExist.Length; i++) {
+
+			string name = currentDirection + " " + (currentLevel + 1) + " " + nodeExist [i];
+			NodeInfo _node = new NodeInfo (currentDirection, currentLevel + 1, nodeExist [i], name, true);
+
+			if (!isOverraped (_node)) {
+				Vector3 pos = new Vector3 ();
+				switch (currentDirection) {
+				case 0:
+					pos = new Vector3 (nodeTrim * nodeExist [i], nodeTrim * (currentLevel + 1), -50);
+					break;
+				case 1:
+					pos = new Vector3 (nodeTrim * (currentLevel + 1), nodeTrim * nodeExist [i], -50);
+					break;
+				case 2:
+					pos = new Vector3 (-nodeTrim * nodeExist [i], -nodeTrim * (currentLevel + 1), -50);
+					break;
+				case 3:
+					pos = new Vector3 (-nodeTrim * (currentLevel + 1), -nodeTrim * nodeExist [i], -50);
+					break;
+				default:
+					break;
+				}
+				newNode = Instantiate (node, pos, Quaternion.identity, parentGroup) as GameObject;
+				newNode.name = name;
+				GameControllerScript.Instance.nodeList.Add (_node);
 			}
 		}
 
-        buyNodeScript.exploreLabor = int.Parse(laborInputField.text);
-        buyNodeScript.UpdateInfo();
-
-		for (int i = 0; i < numberOfNode; i++) {
-			newNode = Instantiate (node, new Vector3 (transform.position.x + positions [i, 0], transform.position.y + positions [i, 1], transform.position.z), Quaternion.identity) as GameObject;
-            newNode.AddComponent<BoxCollider2D>();
-        }
-
-        // enter mini game
-        if (ifMastermind)
-        {
-            SceneManager.LoadScene("mastermind");
-        }
-    }
-	public bool isNodeContainOkay(float[,] arrays, int x, int y, int num) {
-		for (int i = 0; i < num; i++) {
-			if ((x < (arrays[i,0] + 25) && x > (arrays[i,0] - 25)) && (y < (arrays[i,1] + 25) || y > (arrays[i,1] - 25))) {
-				return false;
-			}
+		foreach (NodeInfo node in GameControllerScript.Instance.nodeList) {
+			Debug.Log (node.ToString ());
 		}
-		return true;
+	}
+
+	//Checking overrapping method
+	public bool isOverraped(NodeInfo _node) {
+		foreach (NodeInfo node in GameControllerScript.Instance.nodeList) {
+			if (isSamePos(_node, node))
+				return true;
+		}
+		return false;
+	}
+
+	//Checking same node position method
+	public bool isSamePos(NodeInfo node1, NodeInfo node2) {
+		int[] node1Ab = changeAbpos (node1);
+		int[] node2Ab = changeAbpos (node2);
+		return node1Ab[0] == node2Ab[0] && node1Ab[1] == node2Ab[1];
+	}
+
+	//Changing to absolute position method
+	public int[] changeAbpos(NodeInfo node) {
+		switch (node.direction) {
+		case 0:
+			return new int[] { node.order, node.level };
+			break;
+		case 1:
+			return new int[] { node.level, node.order };
+			break;
+		case 2:
+			return new int[] { -node.order, -node.level };
+			break;
+		case 3:
+			return new int[] { -node.level, -node.order };
+			break;
+		default:
+			return new int[] {0, 0};
+			break;
+		}
 	}
 }
