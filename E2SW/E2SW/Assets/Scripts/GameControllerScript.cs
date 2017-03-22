@@ -27,16 +27,16 @@ public class GameControllerScript : MonoBehaviour {
 			for (int i = 0; i < 4; i++) {
 				switch (i) {
 				case 0:
-					newNode = Instantiate (node, new Vector3 (0, 100, -50), Quaternion.identity, parentGroup) as GameObject;
+					newNode = Instantiate (node, new Vector3 (0, 150, -50), Quaternion.identity, parentGroup) as GameObject;
 					break;
 				case 1:
-					newNode = Instantiate (node, new Vector3 (100, 0, -50), Quaternion.identity, parentGroup) as GameObject;
+					newNode = Instantiate (node, new Vector3 (150, 0, -50), Quaternion.identity, parentGroup) as GameObject;
 					break;
 				case 2:
-					newNode = Instantiate (node, new Vector3 (0, -100, -50), Quaternion.identity, parentGroup) as GameObject;
+					newNode = Instantiate (node, new Vector3 (0, -150, -50), Quaternion.identity, parentGroup) as GameObject;
 					break;
 				case 3:
-					newNode = Instantiate (node, new Vector3 (-100, 0, -50), Quaternion.identity, parentGroup) as GameObject;
+					newNode = Instantiate (node, new Vector3 (-150, 0, -50), Quaternion.identity, parentGroup) as GameObject;
 					break;
 				default:
 					Debug.Log ("Fail To Generate");

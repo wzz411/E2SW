@@ -348,7 +348,7 @@ MonoBehaviour:
   buyNodeScript: {fileID: 114395411470743922}
   ifMastermind: 0
   node: {fileID: 1886720839020642}
-  nodeTrim: 100
+  nodeTrim: 150
 --- !u!114 &114836127594067342
 MonoBehaviour:
   m_ObjectHideFlags: 1
