@@ -52,8 +52,10 @@
      <Compile Include="Assets\Scripts\DisplayInfo.cs" />
      <Compile Include="Assets\Scripts\Draggable.cs" />
      <Compile Include="Assets\Scripts\Dropdown.cs" />
+     <Compile Include="Assets\Scripts\GameControllerScript.cs" />
      <Compile Include="Assets\Scripts\GenerateNewNode.cs" />
      <Compile Include="Assets\Scripts\NewNodeScript.cs" />
+     <Compile Include="Assets\Scripts\NodeInfo.cs" />
      <Compile Include="Assets\Scripts\SceneChange.cs" />
      <Compile Include="Assets\Scripts\Testing.cs" />
      <Compile Include="Assets\Scripts\inputScript.cs" />

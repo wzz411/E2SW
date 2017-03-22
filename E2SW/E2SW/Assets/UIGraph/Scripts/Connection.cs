@@ -151,4 +151,29 @@ public class Connection : MonoBehaviour {
 		target[0] = t1;
 		target[1] = t2;
 	}
+	public void SetPoints(int parent, int child) {
+		points [0] = ChangeDirectionValue (parent);
+		points [1] = ChangeDirectionValue (child);
+	}
+
+	public ConnectionPoint ChangeDirectionValue(int dir) {
+		ConnectionPoint point = new ConnectionPoint ();
+		switch (dir) {
+		case 0:
+			point.direction = ConnectionPoint.ConnectionDirection.North;
+			return point;
+		case 1:
+			point.direction = ConnectionPoint.ConnectionDirection.East;
+			return point;
+		case 2:
+			point.direction = ConnectionPoint.ConnectionDirection.South;
+			return point;
+		case 3:
+			point.direction = ConnectionPoint.ConnectionDirection.West;
+			return point;
+		default:
+			point.direction = ConnectionPoint.ConnectionDirection.Polar;
+			return point;
+		}
+	}
 }
