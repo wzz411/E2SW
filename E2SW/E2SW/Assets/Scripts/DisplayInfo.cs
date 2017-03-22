@@ -1,14 +1,14 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System;
 
 
 public class DisplayInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public GUISkin gameSkin;
-    public string attributes;
     private bool displayInfo_ = false;
-
+	public string attributes;
     public static float funds;
     public static float labor;
     public static float numofturn;
@@ -21,40 +21,127 @@ public class DisplayInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public static float attrG;
     public static float attrH;
     public static float attrWeightedSum=0;
+	public static int attrIndex=0;
+	public static bool ifUpdate = false;
 
-    private void Start()
+	public string[] attrArray = new string[9];
+
+	private string criteriaA;
+	private string criteriaB;
+	private string criteriaC;
+	private string criteriaD;
+	private string criteriaE;
+	private string criteriaF;
+	private string criteriaG;
+	private string criteriaH;
+
+	public void Start()
     {
-        attributes = "";
         // funds random
-        funds = Random.Range(15, 50) * 10;
-        attributes += "$ " + funds + '\n';
+		attrArray[0] = "";
+        funds = UnityEngine.Random.Range(15, 50) * 10;
+        attrArray[0] += "$ " + funds + '\n';
         // labor random
-        labor = Random.Range(1, 5);
-        attributes += "Labor " + labor + '\n';
+		labor = UnityEngine.Random.Range(1, 5);
+        attrArray[0] += "Labor " + labor + '\n';
         // number of turns
-        numofturn = Random.Range(1, 3);
-        attributes += "NumofTurn " + numofturn + '\n';
+		numofturn = UnityEngine.Random.Range(1, 3);
+        attrArray[0] += "NumofTurn " + numofturn + '\n';
         // attributes
-        attrA = Random.Range(0, 9);
-        attributes += "Criteria A " + attrA + '\n';
-        attrB = Random.Range(0, 9);
-        attributes += "Criteria B " + attrB + '\n';
-        attrC = Random.Range(0, 9);
-        attributes += "Criteria C " + attrC + '\n';
-        attrD = Random.Range(0, 9);
-        attributes += "Criteria D " + attrD + '\n';
-        attrE = Random.Range(0, 9);
-        attributes += "Criteria E " + attrE + '\n';
-        attrF = Random.Range(0, 9);
-        attributes += "Criteria F " + attrF + '\n';
-        attrG = Random.Range(0, 9);
-        attributes += "Criteria G " + attrG + '\n';
-        attrH = Random.Range(0, 9);
-        attributes += "Criteria H " + attrH + '\n';
+		attrA = UnityEngine.Random.Range(0, 9);
+        criteriaA = "Criteria A " + attrA + '\n';
+		attrArray[1] = criteriaA;
+		attrB = UnityEngine.Random.Range(0, 9);
+        criteriaB = "Criteria B " + attrB + '\n';
+		attrArray[2] = criteriaB;
+		attrC = UnityEngine.Random.Range(0, 9);
+        criteriaC = "Criteria C " + attrC + '\n';
+		attrArray[3] = criteriaC;
+		attrD = UnityEngine.Random.Range(0, 9);
+        criteriaD = "Criteria D " + attrD + '\n';
+		attrArray[4] = criteriaD;
+		attrE = UnityEngine.Random.Range(0, 9);
+        criteriaE = "Criteria E " + attrE + '\n';
+		attrArray[5] = criteriaE;
+		attrF = UnityEngine.Random.Range(0, 9);
+        criteriaF = "Criteria F " + attrF + '\n';
+		attrArray[6] = criteriaF;
+		attrG = UnityEngine.Random.Range(0, 9);
+		criteriaG = "Criteria G " + attrG + '\n';
+		attrArray[7] = criteriaG;
+		attrH = UnityEngine.Random.Range(0, 9);
+		criteriaH = "Criteria H " + attrH + '\n';
+		attrArray[8] = criteriaH;
+
 
         attrWeightedSum += attrA + attrB + attrC + attrD + attrE + attrF + attrG + attrG + attrH ;
 
     }
+
+	public void Update(){
+		if (ifUpdate) {
+			switch (attrIndex) {
+			case 1: 
+				attrArray [1] += criteriaA;
+				DisplayName ();
+				//Debug.Log(converToString(attrArray));
+				//attributes = converToString (attrArray);
+				ifUpdate = false;
+				break;
+			case 2: 
+				attrArray [2] += criteriaB;
+				DisplayName ();
+				ifUpdate = false;
+				break;
+			case 3: 
+				attrArray [3] += criteriaC;
+				DisplayName ();
+				ifUpdate = false;
+				break;
+			case 4: 
+				attrArray [4] += criteriaD;
+				DisplayName ();
+				ifUpdate = false;
+				break;
+			case 5: 
+				attrArray [5] += criteriaE;
+				DisplayName ();
+				ifUpdate = false;
+				break;
+			case 11:
+				attrArray [1] = "";
+				DisplayName ();
+				//Debug.Log(converToString(attrArray));
+				//attributes = converToString (attrArray);
+				ifUpdate = false;
+				break;
+			case 22:
+				attrArray [2] = "";
+				DisplayName ();
+				ifUpdate = false;
+				break;
+			case 33:
+				attrArray [3] = "";
+				DisplayName ();
+				ifUpdate = false;
+				break;
+			case 44:
+				attrArray [4] = "";
+				DisplayName ();
+				ifUpdate = false;
+				break;
+			case 55:
+				attrArray [5] = "";
+				DisplayName ();
+				ifUpdate = false;
+				break;
+
+			}
+		
+		}
+
+
+	}
 
     void OnGUI()
     {
@@ -78,9 +165,18 @@ public class DisplayInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     {
         if (displayInfo_)
         {
-            GUI.Box(new Rect(Event.current.mousePosition.x + 20, Event.current.mousePosition.y + 10, 150, 180), attributes);
+			GUI.Box(new Rect(Event.current.mousePosition.x + 20, Event.current.mousePosition.y + 10, 150, 180), converToString(attrArray));
         }
     }
+
+
+	private string converToString(string[] strArray){
+		string temp= "";
+		for (int i = 0; i < strArray.Length; i++) {
+			temp += strArray [i];
+		}
+		return temp;
+	}
 
 
 }

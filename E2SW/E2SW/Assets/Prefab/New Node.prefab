@@ -388,6 +388,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameSkin: {fileID: 0}
   attributes: 
+  attrArray:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
 --- !u!114 &114837546908117040
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -218,6 +218,8 @@ MonoBehaviour:
   criteriaToggle: {fileID: 19425262}
   criteriaText: {fileID: 415681005}
   testedCriteriaText: {fileID: 900397144}
+  attrIDon: 4
+  attrIDoff: 44
 --- !u!114 &19425262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -680,6 +682,8 @@ MonoBehaviour:
   criteriaToggle: {fileID: 124801549}
   criteriaText: {fileID: 819260102}
   testedCriteriaText: {fileID: 1555320244}
+  attrIDon: 5
+  attrIDoff: 55
 --- !u!114 &124801549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4889,6 +4893,8 @@ MonoBehaviour:
   criteriaToggle: {fileID: 1114966874}
   criteriaText: {fileID: 924225576}
   testedCriteriaText: {fileID: 661733331}
+  attrIDon: 2
+  attrIDoff: 22
 --- !u!114 &1114966874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5310,6 +5316,8 @@ MonoBehaviour:
   criteriaToggle: {fileID: 1265341978}
   criteriaText: {fileID: 1425572615}
   testedCriteriaText: {fileID: 1709835858}
+  attrIDon: 0
+  attrIDoff: 0
 --- !u!114 &1265341978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5666,6 +5674,8 @@ MonoBehaviour:
   criteriaToggle: {fileID: 1283418228}
   criteriaText: {fileID: 1617295492}
   testedCriteriaText: {fileID: 392568548}
+  attrIDon: 0
+  attrIDoff: 0
 --- !u!114 &1283418228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6767,6 +6777,8 @@ MonoBehaviour:
   criteriaToggle: {fileID: 1474310702}
   criteriaText: {fileID: 182016897}
   testedCriteriaText: {fileID: 4698167}
+  attrIDon: 3
+  attrIDoff: 33
 --- !u!114 &1474310702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7299,6 +7311,8 @@ MonoBehaviour:
   criteriaToggle: {fileID: 1514471185}
   criteriaText: {fileID: 565513504}
   testedCriteriaText: {fileID: 1031438765}
+  attrIDon: 0
+  attrIDoff: 0
 --- !u!114 &1514471185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7408,6 +7422,8 @@ MonoBehaviour:
   criteriaToggle: {fileID: 1519716455}
   criteriaText: {fileID: 182690902}
   testedCriteriaText: {fileID: 1507213138}
+  attrIDon: 1
+  attrIDoff: 11
 --- !u!114 &1519716455
 MonoBehaviour:
   m_ObjectHideFlags: 0
