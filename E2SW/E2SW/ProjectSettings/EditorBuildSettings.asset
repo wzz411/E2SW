@@ -8,11 +8,11 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/main_menu.unity
   - enabled: 0
+    path: Assets/_Scenes/RyanGame.unity
+  - enabled: 0
     path: Assets/prototype.unity
   - enabled: 0
     path: Assets/tech_tree.unity
-  - enabled: 0
-    path: Assets/_Scenes/RyanGame.unity
   - enabled: 0
     path: Assets/rules.unity
   - enabled: 0

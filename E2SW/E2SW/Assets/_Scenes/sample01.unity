@@ -4355,8 +4355,8 @@ GameObject:
   - component: {fileID: 1009581028}
   - component: {fileID: 1009581033}
   - component: {fileID: 1009581034}
-  - component: {fileID: 1009581035}
   - component: {fileID: 1009581036}
+  - component: {fileID: 1009581035}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -4464,17 +4464,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1009581027}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17ccae8cf9c5c454a86500133cbcc767, type: 3}
+  m_Script: {fileID: 11500000, guid: 230d3b01eccb8483a8aa85171c279930, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollZone: 300
-  scrollSpeed: 300
-  xMax: 8
-  xMin: 0
-  yMax: 200
-  yMin: -300
-  zMax: 8
-  zMin: 0
+  cameraSpeed: 0
 --- !u!114 &1009581036
 MonoBehaviour:
   m_ObjectHideFlags: 0
