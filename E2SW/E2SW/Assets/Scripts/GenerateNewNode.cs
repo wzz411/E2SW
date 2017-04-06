@@ -10,7 +10,7 @@ public class GenerateNewNode : MonoBehaviour {
     public Transform button;
     public GameObject node;
     public InputField laborInputField;
-    public BuyNode buyNodeScript;
+    //public BuyNode buyNodeScript;
     public bool ifMastermind;
 
     private GameObject newNode;
@@ -34,8 +34,8 @@ public class GenerateNewNode : MonoBehaviour {
         if (int.Parse(laborInputField.text) >= 5)
             numberOfNewNode += 1;
 
-        buyNodeScript.exploreLabor = int.Parse(laborInputField.text);
-        buyNodeScript.UpdateInfo();
+        //buyNodeScript.exploreLabor = int.Parse(laborInputField.text);
+        //buyNodeScript.UpdateInfo();
        // Debug.Log("Generated!");
 
         while (numberOfNewNode > 0) {

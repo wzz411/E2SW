@@ -1,6 +1,13 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/ManualTreeGenerator.cs">
+    <Files>
+      <File FileName="Assets/Scripts/ManualTreeGenerator.cs" Line="60" Column="19" />
+      <File FileName="Assets/Scripts/NodeAttributes.cs" Line="62" Column="2" />
+      <File FileName="Assets/Scripts/BuyNode.cs" Line="1" Column="1" />
+      <File FileName="Assets/UIGraph/Scripts/Connection.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
