@@ -2,67 +2,128 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class NodeAttributes : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
 
-	public GUISkin gameSkin;
 	public string[] attributes = new string[9];
-	private bool displayInfo = false;
+    public static int attrIndex;
 
-	public static float funds;
-	public static float labor;
-	public static float numofturn;
-	public static float attrA;
-	public static float attrB;
-	public static float attrC;
-	public static float attrD;
-	public static float attrE;
-	public static float attrF;
-	public static float attrG;
-	public static float attrH;
-	public static float attrWeightedSum=0;
+    public GUISkin gameSkin;
+    public float funds, labor, numofturn, attrA, attrB, attrC, attrD, attrE, attrF, attrG, attrH, attrWeightedSum;
 
-	void Start () {
-		attributes[0] = "";
-		// funds random
-		funds = Random.Range(15, 50) * 10;
-		attributes[0] += "$ " + funds + '\n';
-		// labor random
-		labor = Random.Range(1, 5);
-		attributes[0] += "Labor " + labor + '\n';
-		// number of turns
-		numofturn = Random.Range(1, 3);
-		attributes[0] += "NumofTurn " + numofturn + '\n';
-		// attributes
-		attrA = Random.Range(0, 9);
-		attributes[1] = "Criteria A " + attrA + '\n';
-		attrB = Random.Range(0, 9);
-		attributes[2] = "Criteria B " + attrB + '\n';
-		attrC = Random.Range(0, 9);
-		attributes[3] = "Criteria C " + attrC + '\n';
-		attrD = Random.Range(0, 9);
-		attributes[4] = "Criteria D " + attrD + '\n';
-		attrE = Random.Range(0, 9);
-		attributes[5] = "Criteria E " + attrE + '\n';
-		attrF = Random.Range(0, 9);
-		attributes[6] = "Criteria F " + attrF + '\n';
-		attrG = Random.Range(0, 9);
-		attributes[7] = "Criteria G " + attrG + '\n';
-		attrH = Random.Range(0, 9);
-		attributes[8] = "Criteria H " + attrH + '\n';
+    private bool displayInfo = false;
+    private string basicInfo, criteriaA, criteriaB, criteriaC, criteriaD, criteriaE, criteriaF, criteriaG, criteriaH;
 
-		attrWeightedSum += attrA + attrB + attrC + attrD + attrE + attrF + attrG + attrG + attrH ;
+
+    void Start () {
+        funds = Random.Range(15, 50) * 10;
+        labor = Random.Range(1, 5);
+        numofturn = Random.Range(1, 3);
+        attrA = Random.Range(0, 9);
+        attrB = Random.Range(0, 9);
+        attrC = Random.Range(0, 9);
+        attrD = Random.Range(0, 9);
+        attrE = Random.Range(0, 9);
+        attrF = Random.Range(0, 9);
+        attrG = Random.Range(0, 9);
+        attrH = Random.Range(0, 9);
+
+        UpdateDisplayInfo();
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public void UpdateDisplayInfo()
+    {
+        basicInfo = "$ " + funds + '\n' + "Labor " + labor + '\n' + "NumofTurn " + numofturn + '\n';
+        criteriaA = "Criteria A " + attrA + '\n';
+        criteriaB = "Criteria B " + attrB + '\n';
+        criteriaC = "Criteria C " + attrC + '\n';
+        criteriaD = "Criteria D " + attrD + '\n';
+        criteriaE = "Criteria E " + attrE + '\n';
+        criteriaF = "Criteria F " + attrF + '\n';
+        criteriaG = "Criteria G " + attrG + '\n';
+        criteriaH = "Criteria H " + attrH + '\n';
 
-	void OnGUI()
+        ManipulateString(attrIndex);
+
+        attributes[0] = basicInfo;
+        attributes[1] = criteriaA;
+        attributes[2] = criteriaB;
+        attributes[3] = criteriaC;
+        attributes[4] = criteriaD;
+        attributes[5] = criteriaE;
+        attributes[6] = criteriaF;
+        attributes[7] = criteriaG;
+        attributes[8] = criteriaH;
+
+        attrWeightedSum = attrA + attrB + attrC + attrD + attrE + attrF + attrG + attrG + attrH;
+    }
+
+    private void ManipulateString(int attrIndex)
+    {
+        switch (attrIndex)
+        {
+            case 1:
+                criteriaA = "Criteria A " + attrA + '\n';
+                break;
+            case 11:
+                criteriaA = "";
+                break;
+            case 2:
+                criteriaB = "Criteria B " + attrB + '\n';
+                break;
+            case 22:
+                criteriaB = "";
+                break;
+            case 3:
+                criteriaC = "Criteria C " + attrC + '\n';
+                break;
+            case 33:
+                criteriaC = "";
+                break;
+            case 4:
+                criteriaD = "Criteria D " + attrD + '\n';
+                break;
+            case 44:
+                criteriaD = "";
+                break;
+            case 5:
+                criteriaE = "Criteria E " + attrE + '\n';
+                break;
+            case 55:
+                criteriaE = "";
+                break;
+            case 6:
+                criteriaF = "Criteria F " + attrF + '\n';
+                break;
+            case 66:
+                criteriaF = "";
+                break;
+            case 7:
+                criteriaG = "Criteria G " + attrG + '\n';
+                break;
+            case 77:
+                criteriaG = "";
+                break;
+            case 8:
+                criteriaH = "Criteria H " + attrH + '\n';
+                break;
+            case 88:
+                criteriaH = "";
+                break;
+        }
+    }
+
+    private void Update()
+    {
+        //Debug.Log(transform.parent.name + " funds is " + funds);
+    }
+
+    void OnGUI()
 	{
 		GUI.skin = gameSkin;
-		DisplayName();
+        DisplayName();
+        
 	}
 
 	void IPointerEnterHandler.OnPointerEnter(PointerEventData eventData)
@@ -92,8 +153,6 @@ public class NodeAttributes : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 		return result;
 	}
 
-	public void ButtonDebug(){
-		Debug.Log ("button clicked");
-	}
+
 		
 }

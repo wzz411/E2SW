@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Node Name
+  - Children Node
+  - Edit Panel
+  - Edit Button
+  - Create Button
+  - Node Info and Buy Btn
+  - Buy Node
   layers:
   - Default
   - TransparentFX

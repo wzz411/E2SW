@@ -1,69 +1,68 @@
 ﻿using UnityEngine;
-using System.Collections;
+using UnityEngine.UI;
 
-public class ManualTreeGenerator : MonoBehaviour
-{
-	public bool ifDraw = false;
-	public GUISkin gameSkin;
-	public GameObject node;
-	public GameObject line;
-	public static int count = 0;
+public class ManualTreeGenerator : MonoBehaviour {
 
-	private Transform prev;
-	private Vector3 mousePos;
+    // Create connecting lines between nodes
+    private LineRenderer lr;
+    private Vector3 initialPos = new Vector3(0, 0, 0);
+    private Vector3 currentPos = new Vector3(0, 0, 0);
+    private bool ifOnGUI = false;
+    private int index = 1; // even #, including 0, for parent node; odd # for child node
 
-	//private bool ifCreated = false;			//? make sure that each node generates one child
-
-
-
-	void Update(){
-		// instantiate node when mouse clicked
-		//? if (Input.GetMouseButtonDown(0) && !ifCreated)
-//		if (Input.GetMouseButtonDown(0))
-//		{
-//			mousePos = Input.mousePosition;
-//			mousePos.z = 200;
-//			Vector3 worldPos = Camera.main.ScreenToWorldPoint(mousePos);
-//			GameObject newNode = Instantiate(node, worldPos, Quaternion.identity) as GameObject;
-//			newNode.name = "node" + count;
-//			newNode.transform.SetParent(GameObject.Find ("Node Group").transform);
-//			// ? ifCreated = true;
-//			count++;					// giving unique name to the new node 
-//			Destroy(GameObject.Find("CreateButton")); // or try to disable it: button.enable = false
-//
-//		}
-		if (ifDraw) {
-			DrawConnectionLine ();
-		}
-
-	}
-		
+    // 
+    private GameObject node;
+    private static int count = 1;
 
 
+    void Start () {
+        // initiate line renderer -- conncecting lines
+        lr = GetComponent<LineRenderer>();
+        Button createButton = GetComponent<Button>();
+        createButton.onClick.AddListener(TaskOnClick);
+        initialPos = transform.parent.position;
+        initialPos.z = 250;
+        
+        // initiate all line points 
+        for (int i = 0; i < 10; i++)
+        {
+            lr.SetPosition(i, initialPos);
+        }
 
-	public void CreateNode(){
-		Debug.Log ("creat node ()");
-	}
+        // initiate new node
+        node = Resources.Load("Prefabs/NewNode", typeof(GameObject)) as GameObject;
 
-	public void DrawConnectionLine(){
-		ifDraw = true;
+    }
 
-		mousePos = Input.mousePosition;
-		mousePos.z = 200;
-		Vector3 worldPos = Camera.main.ScreenToWorldPoint(mousePos);
-		GameObject newLine = Instantiate(line, worldPos, Quaternion.identity) as GameObject;
-		Vector3 scale = new Vector3(1, Mathf.Sqrt(Mathf.Pow(node.transform.position.y,2f)-Mathf.Pow(mousePos.y,2f)),1);
-		newLine.transform.localScale = scale;
-		newLine.transform.SetParent(GameObject.Find ("Node Group").transform);			
+    // if create button is clicked
+    private void TaskOnClick()
+    {
+        ifOnGUI = true;
+    }
 
-		if (Input.GetMouseButtonDown (0)) {
-			ifDraw = false;
-		}
+    private void OnGUI()
+    {
+        if (ifOnGUI)
+        {
+            currentPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            currentPos.z = 250;
+            lr.SetPosition(index*2-1, currentPos);
+            // if mouse clicked, generate the node
+            if (Event.current.isMouse)
+            {
+                ifOnGUI = false;
+                GameObject newNode = Instantiate(node, currentPos, Quaternion.identity) as GameObject;
+                newNode.name = "node" + count;
+                // re-name new node
+                Button btn = newNode.gameObject.GetComponentInChildren<Button>();
+                btn.GetComponentInChildren<Text>().text = newNode.name;
+                // assign new node to its parent
+                newNode.transform.SetParent(transform.parent.Find("ChildrenNode"));
+                count++;
+                index++;
+            }
+        }
+    }
 
-
-	}
-
-
-
-
+    
 }
