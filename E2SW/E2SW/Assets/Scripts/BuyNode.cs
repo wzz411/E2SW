@@ -8,15 +8,14 @@ public class BuyNode : MonoBehaviour
 {
     public Button buyButton;
     public static int pn; // pn = numofPN = number of purchased nodes
+    public static float attrWeightedSum;
 
     public Text funds, labor, current, remaining, criteriaA, criteriaB, criteriaC, criteriaD, criteriaE, criteriaF, criteriaG, criteriaH, numofPN;
-
-
-    public static int count;
 
     void Start()
     {
         //TODO: find a more efficient way to assign game objects
+        
         buyButton = GetComponent<Button>();
         buyButton.onClick.AddListener(TaskOnClick);
         funds = GameObject.Find("fundsValue").GetComponent<Text>();
@@ -24,17 +23,14 @@ public class BuyNode : MonoBehaviour
         current = GameObject.Find("currentTurnValue").GetComponent<Text>();
         remaining = GameObject.Find("turnsRemainingValue").GetComponent<Text>();
         numofPN = GameObject.Find("numofPNValue").GetComponent<Text>();
-        //find with tag
-
-        criteriaA = GameObject.Find("ValueCriteriaA").GetComponent<Text>();
-        criteriaB = GameObject.Find("ValueCriteriaB").GetComponent<Text>();
-        criteriaC = GameObject.Find("ValueCriteriaC").GetComponent<Text>();
-        criteriaD = GameObject.Find("ValueCriteriaD").GetComponent<Text>();
-        criteriaE = GameObject.Find("ValueCriteriaE").GetComponent<Text>();
-        criteriaF = GameObject.Find("ValueCriteriaF").GetComponent<Text>();
-        criteriaG = GameObject.Find("ValueCriteriaG").GetComponent<Text>();
-        criteriaH = GameObject.Find("ValueCriteriaH").GetComponent<Text>();
-
+        criteriaA = GameObject.FindWithTag("EstCriteriaA").GetComponent<Text>();
+        criteriaB = GameObject.FindWithTag("EstCriteriaB").GetComponent<Text>();
+        criteriaC = GameObject.FindWithTag("EstCriteriaC").GetComponent<Text>();
+        criteriaD = GameObject.FindWithTag("EstCriteriaD").GetComponent<Text>();
+        criteriaE = GameObject.FindWithTag("EstCriteriaE").GetComponent<Text>();
+        criteriaF = GameObject.FindWithTag("EstCriteriaF").GetComponent<Text>();
+        criteriaG = GameObject.FindWithTag("EstCriteriaG").GetComponent<Text>();
+        criteriaH = GameObject.FindWithTag("EstCriteriaH").GetComponent<Text>();
 
 
     }
@@ -55,8 +51,11 @@ public class BuyNode : MonoBehaviour
         criteriaF.text = (float.Parse(criteriaF.text) + nodeAttr.attrF).ToString();
         criteriaG.text = (float.Parse(criteriaG.text) + nodeAttr.attrG).ToString();
         criteriaH.text = (float.Parse(criteriaH.text) + nodeAttr.attrH).ToString();
-        Debug.Log("dd");
         buyButton.GetComponent<Button>().interactable = false;
+
+        attrWeightedSum += nodeAttr.attrA + nodeAttr.attrB + nodeAttr.attrC + nodeAttr.attrD + nodeAttr.attrE + nodeAttr.attrF + nodeAttr.attrG + nodeAttr.attrH;
+
+        //TODO: work on depth of the tree
     }
 
   

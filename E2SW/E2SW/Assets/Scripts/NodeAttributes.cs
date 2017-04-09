@@ -10,7 +10,7 @@ public class NodeAttributes : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     public static int attrIndex;
 
     public GUISkin gameSkin;
-    public float funds, labor, numofturn, attrA, attrB, attrC, attrD, attrE, attrF, attrG, attrH, attrWeightedSum;
+    public float funds, labor, numofturn, attrA, attrB, attrC, attrD, attrE, attrF, attrG, attrH;
 
     private bool displayInfo = false;
     private string basicInfo, criteriaA, criteriaB, criteriaC, criteriaD, criteriaE, criteriaF, criteriaG, criteriaH;
@@ -55,8 +55,6 @@ public class NodeAttributes : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         attributes[6] = criteriaF;
         attributes[7] = criteriaG;
         attributes[8] = criteriaH;
-
-        attrWeightedSum = attrA + attrB + attrC + attrD + attrE + attrF + attrG + attrG + attrH;
     }
 
     private void ManipulateString(int attrIndex)
@@ -116,7 +114,7 @@ public class NodeAttributes : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     private void Update()
     {
-        //Debug.Log(transform.parent.name + " funds is " + funds);
+        //Debug.Log("attrWeightedSum is " + attrWeightedSum);
     }
 
     void OnGUI()

@@ -8,22 +8,22 @@ using UnityEngine.Events;
 public class popUpWindow : MonoBehaviour {
 
     public GameObject popUp;
-    public Text actionLog;
 
-    public void recordlog(string log)
+    public void Show()
     {
-        actionLog.text += (log + "; ");
-        popUp.SetActive(true);
+        Vector3 currentPos = gameObject.transform.position;
+        currentPos.x = 400;
+        currentPos.y = 400;
+        transform.position = currentPos;
     }
 
-    public void show()
+    public void Hide()
     {
-        popUp.SetActive(true);
-    }
-
-    public void hide()
-    {
-        popUp.SetActive(false);
+        Vector3 currentPos = gameObject.transform.position;
+        
+        currentPos.x = -5000;
+        currentPos.y = -5000;
+        transform.position = currentPos;
     }
 		
 	

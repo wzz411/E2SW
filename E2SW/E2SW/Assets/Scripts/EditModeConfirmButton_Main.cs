@@ -30,11 +30,9 @@ public class EditModeConfirmButton_Main : MonoBehaviour {
 
     private void TaskOnClick()
     {
-        Debug.Log("here");
         if (funds_input.text != "")
         {
             funds.text = funds_input.text;
-            Debug.Log("here2");
         }
         if (labor_input.text != "")
         {

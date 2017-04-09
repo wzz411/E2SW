@@ -11,6 +11,15 @@ TagManager:
   - Create Button
   - Node Info and Buy Btn
   - Buy Node
+  - EstCriteriaA
+  - EstCriteriaB
+  - EstCriteriaC
+  - EstCriteriaD
+  - EstCriteriaE
+  - EstCriteriaF
+  - EstCriteriaG
+  - EstCriteriaH
+  - PopUpCriteria
   layers:
   - Default
   - TransparentFX
