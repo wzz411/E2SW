@@ -20,6 +20,12 @@ TagManager:
   - EstCriteriaG
   - EstCriteriaH
   - PopUpCriteria
+  - Criteria1
+  - Criteria2
+  - clueControl
+  - Mini Game
+  - Drill_1
+  - Main Game Scene
   layers:
   - Default
   - TransparentFX
