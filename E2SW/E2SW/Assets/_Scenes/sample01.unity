@@ -6216,6 +6216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   node: {fileID: 1554175334020996, guid: 94983ab029ace78429d7aa98a12a5a80, type: 2}
+  nodeConnection: {fileID: 133288, guid: b8e9276d2ec4a497c8b03ea67a0c3c83, type: 2}
   initialPos: 300
   nodeList: []
 --- !u!4 &1141618996

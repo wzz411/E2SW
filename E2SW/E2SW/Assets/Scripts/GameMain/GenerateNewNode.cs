@@ -91,14 +91,13 @@ public class GenerateNewNode : MonoBehaviour {
 				newNode.name = name;
 				childNames.Add (name);
 				////////////////////////////////////////////////////////////////////////////////////////////////
-				newConnection = Instantiate (nodeConnection, pos, Quaternion.identity, parentGroup) as GameObject;
+				newConnection = Instantiate (nodeConnection, new Vector3(0, 0, 0), Quaternion.identity, parentGroup) as GameObject;
 
-				newConnection.name = name + "Connection";
+				newConnection.name = name + " Connection";
 
 				Connection nC = newConnection.GetComponent<Connection> ();
 				nC.SetTargets (transform as RectTransform, newNode.transform as RectTransform);
 				nC.SetPoints(currentDirection, (currentDirection + 2) % 4);
-
 				////////////////////////////////////////////////////////////////////////////////////////////////
 				GameControllerScript.Instance.nodeList.Add (_node);
 			}

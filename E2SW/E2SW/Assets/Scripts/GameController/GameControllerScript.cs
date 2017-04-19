@@ -1,15 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameControllerScript : MonoBehaviour {
 
 	public GameObject node;
+	public GameObject nodeConnection;
 	public int initialPos;
 	public List<NodeInfo> nodeList = new List<NodeInfo> ();
 	public static GameControllerScript Instance;
 
 	private GameObject newNode;
+	private GameObject newChildNode;
+	private	GameObject newConnection;
 	private Transform parentGroup;
 
 	void Start () {
@@ -54,11 +58,53 @@ public class GameControllerScript : MonoBehaviour {
 			//Loading the Game Method
 			Debug.Log ("Loading the Game");
 
-			for (int i = 0; i < nodeList.Count; i++) {
-				int[] pos = GenerateNewNode.Instance.changeAbpos (nodeList [i]);
+			List<NodeInfo> tempNodeList = new List<NodeInfo> (nodeList);
 
-				newNode = Instantiate (node, new Vector3 (pos [0] * 150 + initialPos, pos [1] * 150 + initialPos, -50), Quaternion.identity, parentGroup) as GameObject;
-				newNode.name = nodeList [i].name;
+			while(tempNodeList.Count != 0) {
+				
+				Debug.Log (tempNodeList.Count);
+				NodeInfo tempNode = tempNodeList [0];
+
+				int[] pos = GenerateNewNode.Instance.changeAbpos (tempNode);
+				string name = tempNode.name;
+
+				Vector3 vec3Pos = new Vector3 (pos [0] * 150 + initialPos, pos [1] * 150 + initialPos, -50);
+
+				newNode = Instantiate (node, vec3Pos, Quaternion.identity, parentGroup) as GameObject;
+				newNode.name = name;
+
+				List<string> childNodeNames = tempNode.childNodeName;
+
+				if (childNodeNames != null) {
+
+					NodeInfo tempChildNode = tempNode;
+					string childNodeName = childNodeNames [0];
+
+					for (int i = 0; i < tempNodeList.Count; i++) {
+						if (tempNodeList [i].name == childNodeName) {
+							tempChildNode = tempNodeList [i];
+							break;
+						}
+					}
+
+					newChildNode = Instantiate (node, vec3Pos, Quaternion.identity, parentGroup) as GameObject;
+					newChildNode.name = childNodeName; 
+
+					newConnection = Instantiate (nodeConnection, new Vector3 (0, 0, 0), Quaternion.identity, parentGroup) as GameObject;
+					newConnection.name = childNodeName + " Connection";
+
+					int currentDirection = int.Parse (newNode.name.Split (' ') [0]);
+
+					Connection nC = newConnection.GetComponent<Connection> ();
+					nC.SetTargets (newNode.transform as RectTransform, newChildNode.transform as RectTransform);
+					nC.SetPoints (currentDirection, (currentDirection + 2) % 4);
+					Debug.Log ("Connection Created : " + newChildNode.name);
+
+					tempNodeList.Remove (tempChildNode);
+					childNodeNames.Remove (childNodeName);
+				}
+
+				tempNodeList.Remove (tempNode);
 			}
 		}
 	}
