@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 12022754}
   - component: {fileID: 11479312}
   m_Layer: 0
-  m_Name: connection
-  m_TagString: Untagged
+  m_Name: None <> None
+  m_TagString: NodeConnection
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -113,7 +113,7 @@ LineRenderer:
   - {x: 15, y: -6, z: 7.5}
   m_Parameters:
     serializedVersion: 2
-    widthMultiplier: 1
+    widthMultiplier: 20
     widthCurve:
       serializedVersion: 2
       m_Curve:
