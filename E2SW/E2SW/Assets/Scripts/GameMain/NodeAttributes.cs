@@ -8,26 +8,18 @@ public class NodeAttributes : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
 	public string[] attributes = new string[9];
     public static int attrIndex;
+    public static bool colliding;
 
     public GUISkin gameSkin;
     public float funds, labor, numofturn, attrA, attrB, attrC, attrD, attrE, attrF, attrG, attrH;
-    public bool ifMiniGame, ifDrill;
+    public bool ifMiniGame, ifDrill_1, ifDrill_2;
 
-    private bool displayInfo = false;
+    public bool displayInfo = false;
     private string basicInfo, criteriaA, criteriaB, criteriaC, criteriaD, criteriaE, criteriaF, criteriaG, criteriaH;
     
 
 
     void Start () {
-        ifMiniGame = Random.Range(0, 100) > 70;
-        if (ifMiniGame)
-        {
-            ifDrill = false;
-        }
-        else
-        {
-            ifDrill = Random.Range(0,100) > 50;
-        }
 
         funds = Random.Range(15, 50) * 10;
         labor = Random.Range(1, 5);
@@ -142,11 +134,14 @@ public class NodeAttributes : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 	void IPointerEnterHandler.OnPointerEnter(PointerEventData eventData)
 	{
 		displayInfo = true;
+        colliding = true;
+
 	}
 
 	void IPointerExitHandler.OnPointerExit(PointerEventData eventData)
 	{
 		displayInfo = false;
+        colliding = false;
 	}
 
 	public void DisplayName()

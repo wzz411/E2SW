@@ -31,3 +31,5 @@ EditorBuildSettings:
     path: Assets/_Scenes/mini_game.unity
   - enabled: 1
     path: Assets/_Scenes/drill_1.unity
+  - enabled: 1
+    path: Assets/_Scenes/drill_2.unity

@@ -133,8 +133,8 @@ public class Testing : MonoBehaviour {
         numOfTests = (float)Math.Exp(float.Parse(numberOfTestPerformed.text));
         numOfTurns = (float)Math.Exp(((float.Parse(currentTurn.text))-(float.Parse(numberOfTestPerformed.text)))*0.2f);
 		labor.text = (float.Parse(labor.text) - numOfPeople).ToString();
-        costOfCurrentTest.text = (300 + (20 * numOfTests) + 30 * numOfTurns + 30 * numOfPeople).ToString();
-        funds.text = (float.Parse(funds.text) - (300 + (20 * numOfTests) + 30 * numOfTurns + 30 * numOfPeople)).ToString("0.##");
+        costOfCurrentTest.text = ((300 + (20 * numOfTests) + 30 * numOfTurns + 30 * numOfPeople) * GodMode.coef_testCost).ToString();
+        funds.text = (float.Parse(funds.text) - ((300 + (20 * numOfTests) + 30 * numOfTurns + 30 * numOfPeople)) * GodMode.coef_testCost).ToString("0.##");
         overAllPG.text = (float.Parse(overAllPG.text) + float.Parse(apgFromCurrentTest.text)).ToString();
 
         

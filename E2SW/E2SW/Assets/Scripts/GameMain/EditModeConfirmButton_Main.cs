@@ -5,7 +5,9 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class EditModeConfirmButton_Main : MonoBehaviour {
-    public InputField funds_input, labor_input, current_input, remaining_input, overallPG_input, numofPN_input, numofTP_input;
+    public InputField funds_input, labor_input, current_input, remaining_input, overallPG_input, numofPN_input, numofTP_input, coef_funds_input, 
+        coef_labor_input, coef_testCost_input, coef_criteriaA_input, coef_criteriaB_input, coef_criteriaC_input, coef_criteriaD_input, coef_criteriaE_input,
+        coef_criteriaF_input, coef_criteriaG_input, coef_criteriaH_input;
     public Text funds, labor, current, remaining, overallPG, numofPN, numofTP;
     public Button confirmButton;
     // Use this for initialization
@@ -58,6 +60,48 @@ public class EditModeConfirmButton_Main : MonoBehaviour {
         {
             numofTP.text = numofTP_input.text;
         }
+        if(coef_funds_input.text != "")
+        {
+            GodMode.coef_funds = float.Parse(coef_funds_input.text);
+        }
+        if (coef_labor_input.text != "")
+        {
+            GodMode.coef_labor = float.Parse(coef_labor_input.text);
+        }
+        if (coef_testCost_input.text != "")
+        {
+            GodMode.coef_testCost = float.Parse(coef_testCost_input.text);
+        }
+        if (coef_criteriaA_input.text != "")
+        {
+            GodMode.coef_criteriaA = float.Parse(coef_criteriaA_input.text);
+        }
+        if (coef_criteriaB_input.text != "")
+        {
+            GodMode.coef_criteriaB = float.Parse(coef_criteriaB_input.text);
+        }
+        if (coef_criteriaC_input.text != "")
+        {
+            GodMode.coef_criteriaC = float.Parse(coef_criteriaC_input.text);
+        }
+        if (coef_criteriaD_input.text != "")
+        {
+            GodMode.coef_criteriaD = float.Parse(coef_criteriaD_input.text);
+        }
+        if (coef_criteriaE_input.text != "")
+        {
+            GodMode.coef_criteriaE = float.Parse(coef_criteriaE_input.text);
+        }
+        if (coef_criteriaF_input.text != "")
+        {
+            GodMode.coef_criteriaF = float.Parse(coef_criteriaF_input.text);
+        }
+        if (coef_criteriaG_input.text != "")
+        {
+            GodMode.coef_criteriaG = float.Parse(coef_criteriaG_input.text);
+        }
+
+
 
         Destroy(transform.parent.gameObject);
         GameObject[] editBtns = GameObject.FindGameObjectsWithTag("Edit Button");

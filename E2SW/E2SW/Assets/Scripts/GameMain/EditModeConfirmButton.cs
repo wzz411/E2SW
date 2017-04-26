@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class EditModeConfirmButton : MonoBehaviour {
 
-    public InputField funds, labor, numofturn, attrA, attrB, attrC, attrD, attrE, attrF, attrG, attrH;
+    public InputField funds, labor, numofturn, attrA, attrB, attrC, attrD, attrE, attrF, attrG, attrH, minigame, drill_1, drill_2;
     public Button confirmButton;
     // Use this for initialization
     void Start () {
@@ -60,6 +60,18 @@ public class EditModeConfirmButton : MonoBehaviour {
         if(attrH.text != "")
         {
             temp.attrH = float.Parse(attrH.text);
+        }
+        if (minigame.text != "")
+        {
+            temp.ifMiniGame = (int.Parse(minigame.text) == 1);
+        }
+        if (drill_1.text != "")
+        {
+            temp.ifDrill_1 = (int.Parse(drill_1.text) == 1);
+        }
+        if (drill_2.text != "")
+        {
+            temp.ifDrill_2 = (int.Parse(drill_2.text) == 1);
         }
 
         temp.UpdateDisplayInfo();

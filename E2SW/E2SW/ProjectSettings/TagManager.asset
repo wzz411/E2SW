@@ -26,6 +26,7 @@ TagManager:
   - Mini Game
   - Drill_1
   - Main Game Scene
+  - Initial Node
   layers:
   - Default
   - TransparentFX
