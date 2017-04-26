@@ -68,7 +68,7 @@ public class GenerateNewNode : MonoBehaviour {
 
 			string name = currentDirection + " " + (currentLevel + 1) + " " + nodeExist [i];
 			NodeInfo _node = new NodeInfo (currentDirection, currentLevel + 1, nodeExist [i], name, true);
-
+				
 			if (!isOverraped (_node)) {
 				Vector3 pos = new Vector3 ();
 				switch (currentDirection) {

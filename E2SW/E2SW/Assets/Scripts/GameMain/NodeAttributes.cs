@@ -19,39 +19,74 @@ public class NodeAttributes : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
 
     void Start () {
-        ifMiniGame = Random.Range(0, 100) > 70;
-        if (ifMiniGame)
-        {
-            ifDrill = false;
-        }
-        else
-        {
-            ifDrill = Random.Range(0,100) > 50;
-        }
 
-        funds = Random.Range(15, 50) * 10;
-        labor = Random.Range(1, 5);
-        numofturn = Random.Range(1, 3);
-        attrA = Random.Range(0, 9);
-        attrB = Random.Range(0, 9);
-        attrC = Random.Range(0, 9);
-        attrD = Random.Range(0, 9);
-        attrE = Random.Range(0, 9);
-        attrF = Random.Range(0, 9);
-        attrG = Random.Range(0, 9);
-        attrH = Random.Range(0, 9);
+		int order = 0;
 
-        basicInfo = "$ " + funds + '\n' + "Labor " + labor + '\n' + "NumofTurn " + numofturn + '\n';
-        criteriaA = "Criteria A " + attrA + '\n';
-        criteriaB = "Criteria B " + attrB + '\n';
-        criteriaC = "Criteria C " + attrC + '\n';
-        criteriaD = "Criteria D " + attrD + '\n';
-        criteriaE = "Criteria E " + attrE + '\n';
-        criteriaF = "Criteria F " + attrF + '\n';
-        criteriaG = "Criteria G " + attrG + '\n';
-        criteriaH = "Criteria H " + attrH + '\n';
+		for (int i = 0; i < GameControllerScript.Instance.nodeList.Count; i++) {
+			if (transform.parent.name == GameControllerScript.Instance.nodeList [i].name) {
+				order = i;
+				break;
+			}
+		}
 
-        UpdateDisplayInfo();
+		NodeInfo nowNode = GameControllerScript.Instance.nodeList [order];
+
+		if (nowNode.isNewAttribute) {
+			ifMiniGame = Random.Range (0, 100) > 70;
+			if (ifMiniGame) {
+				ifDrill = false;
+			} else {
+				ifDrill = Random.Range (0, 100) > 50;
+			}
+
+			funds = Random.Range (15, 50) * 10;
+			nowNode.funds = funds;
+			labor = Random.Range (1, 5);
+			nowNode.labor = labor;
+			numofturn = Random.Range (1, 3);
+			nowNode.numofturn = numofturn;
+			attrA = Random.Range (0, 9);
+			nowNode.attrA = attrA;
+			attrB = Random.Range (0, 9);
+			nowNode.attrB = attrB;
+			attrC = Random.Range (0, 9);
+			nowNode.attrC = attrC;
+			attrD = Random.Range (0, 9);
+			nowNode.attrD = attrD;
+			attrE = Random.Range (0, 9);
+			nowNode.attrE = attrE;
+			attrF = Random.Range (0, 9);
+			nowNode.attrF = attrF;
+			attrG = Random.Range (0, 9);
+			nowNode.attrG = attrG; 
+			attrH = Random.Range (0, 9);
+			nowNode.attrH = attrH;
+
+			nowNode.isNewAttribute = false;
+		} else {
+			funds = nowNode.funds;
+			labor = nowNode.labor;
+			numofturn = nowNode.numofturn;
+			attrA = nowNode.attrA;
+			attrB = nowNode.attrB;
+			attrC = nowNode.attrC;
+			attrD = nowNode.attrD;
+			attrE = nowNode.attrE;
+			attrF = nowNode.attrF;
+			attrG = nowNode.attrG;
+			attrH = nowNode.attrH;
+		}
+		basicInfo = "$ " + funds + '\n' + "Labor " + labor + '\n' + "NumofTurn " + numofturn + '\n';
+		criteriaA = "Criteria A " + attrA + '\n';
+		criteriaB = "Criteria B " + attrB + '\n';
+		criteriaC = "Criteria C " + attrC + '\n';
+		criteriaD = "Criteria D " + attrD + '\n';
+		criteriaE = "Criteria E " + attrE + '\n';
+		criteriaF = "Criteria F " + attrF + '\n';
+		criteriaG = "Criteria G " + attrG + '\n';
+		criteriaH = "Criteria H " + attrH + '\n';
+
+		UpdateDisplayInfo ();
 
 	}
 	

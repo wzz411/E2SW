@@ -13,6 +13,9 @@ public class NodeInfo {
 	//Node information
 	public bool isClicked; //Clicked = 1 or true, Unclicked = 0 or false;
 	public bool isHidden; //Hidden = 1 or true, Not Hidden = 0 or false;
+	public bool isNewAttribute;
+
+	public float funds, labor, numofturn, attrA, attrB, attrC, attrD, attrE, attrF, attrG, attrH;
 
 	//Connection information
 	public List<string> childNodeName;
@@ -25,6 +28,7 @@ public class NodeInfo {
 		name = _name;
 		isHidden = _isHidden;
 		isClicked = false;
+		isNewAttribute = true;
 	}
 
 
